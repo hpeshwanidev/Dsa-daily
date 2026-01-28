@@ -1,26 +1,39 @@
 # 🔁 Contains Duplicate — LeetCode #217
 
-🔗 **[View Problem](https://leetcode.com/problems/contains-duplicate/)**  
+🔗 **Problem Link:** https://leetcode.com/problems/contains-duplicate/  
 💡 **Difficulty:** Easy  
 
 ---
 
 ## 🧠 Approach
 
-- If the array has only one element, return `false` — since no duplicates are possible.  
-- Use two nested loops:  
-  - Compare each element with every other element after it.  
-  - If any two elements are equal, return `true`.  
-- If no duplicates are found after all comparisons, return `false`.
+1. **Use a HashSet**
+   - A `HashSet` stores only unique values.
+   - It allows constant-time lookup on average.
+
+2. **Iterate through the array**
+   - For each number:
+     - Check if it already exists in the set.
+     - If it does, a duplicate is found → return `true`.
+     - Otherwise, add the number to the set.
+
+3. **No duplicates found**
+   - If the loop completes without finding any repeated values, return `false`.
 
 ---
 
 ## ⏱️ Complexity Analysis
 
 | Complexity | Description |
-|-------------|-------------|
-| **Time** | O(n²) — nested loops compare every pair |
-| **Space** | O(1) — no extra data structures used |
+|----------|-------------|
+| **Time** | `O(n)` — each element is processed once |
+| **Space** | `O(n)` — HashSet stores up to `n` elements |
 
 ---
 
+## 📝 Notes
+
+- This approach is more efficient than a brute-force nested loop solution.
+- HashSet provides fast lookups, making the solution scalable for large inputs.
+
+---

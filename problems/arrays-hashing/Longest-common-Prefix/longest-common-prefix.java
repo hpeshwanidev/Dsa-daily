@@ -1,5 +1,6 @@
 class Solution {
     public String longestCommonPrefix(String[] strs) {
+        if (strs == null || strs.length == 0) return "";
         String sol = "";
         int l = strs[0].length();
         for(int i=1; i<strs.length; i++){
@@ -7,23 +8,16 @@ class Solution {
                 l = strs[i].length();
             }
         }
-        if(strs.length==3){
-            for(int j=0; j<l; j++){
-                if(strs[0].charAt(j) == strs[1].charAt(j) && strs[1].charAt(j) == strs[2].charAt(j)){
-                    sol+=strs[1].charAt(j);
+        
+        for(int j=0; j<l; j++){
+            char current = strs[0].charAt(j);
+            for(int i=1; i<strs.length; i++){
+                if(strs[i].charAt(j) != current){
+                    return sol;
                 }
             }
+            sol += current;
         }
-        else if (strs.length==1){
-            sol+=strs[0];
-        }
-        for (int i =1; i<strs.length-2; i++){
-            for(int j=0; j<l; j++){
-                if(strs[i-1].charAt(j) == strs[i].charAt(j) && strs[i].charAt(j) == strs[i+1].charAt(j)){
-                    sol+=strs[i-1].charAt(j);
-                }
-            }
-        }
-        return sol ; 
+        return sol;
     }
 }

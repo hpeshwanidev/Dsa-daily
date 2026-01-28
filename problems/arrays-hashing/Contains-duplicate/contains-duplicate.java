@@ -1,16 +1,17 @@
+import java.util.HashSet;
 class Solution {
-    public boolean containsDuplicate(int[] nums) { 
-        if(nums.length == 1){
-            return false;
-        }
-            for(int a=0; a<nums.length-1; a++){
-                for(int b=a+1; b<nums.length;b++){
-                    if(nums[a] == nums[b]){
-                        return true;
-                    }
-                }          
+    public boolean hasDuplicate(int[] nums) {
+        HashSet<Integer> sol = new HashSet<Integer>();
+        boolean ans = false;
+        for (int i=0; i<nums.length; i++){
+            if (sol.contains(nums[i])){
+                ans = true;
+                break;
             }
-            return false;
-        
+            else if(!sol.contains(nums[i])){
+                sol.add(nums[i]);
+            }
+        }
+        return ans;
     }
-    }
+}
